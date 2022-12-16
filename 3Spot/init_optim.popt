@@ -1,0 +1,79 @@
+OPTIM
+
+RESTART
+NO
+
+ENOPT
+MAX_ITER	5
+OBJ_FUNC_TOL	1E-8
+STEP_TOL	1E-9
+ALPHA	0.25
+ALPHA_ITER_MAX	2
+
+NE
+5
+
+STATE
+INJBHP
+PRODBHP
+
+PRIOR_INJBHP
+MEAN	init_injbhp.npz
+VAR	0.01
+LIMITS	100	500
+
+PRIOR_PRODBHP
+MEAN	init_prodbhp.npz
+VAR	0.01
+LIMITS	20	300
+
+TEMPSAVE
+YES
+
+RESTARTSAVE
+YES
+
+ANALYSISDEBUG
+ALPHA
+STEP
+ALPHA_ITER
+OBJ_FUNC_VALUES
+
+NPV_CONST
+WOP	283.05
+WGP	0
+WWP	37.74
+WWI	12.58
+DISC	0.08
+WELL_COST	1E6
+OBJ_SCALING	1E4
+
+FWDSIM
+
+SIMULATOR
+SUBSURF_FLOW	OPM_FLOW
+# SUBSURF_FLOW	ECL_100
+
+PARALLEL
+2
+
+#SIMOPTIONS
+#SIMPATH	/ecl/macros/
+#SIM_FLAG	--enable-well-operability-check=false --enable-tuning=true
+
+RUNFILE
+3WELL
+
+REPORTPOINT
+report_dates.csv
+
+REPORTTYPE
+DATES
+
+DATATYPE
+FOPT
+FGPT
+FWPT
+FWIT
+
+#NOTE: It is important to have one empty line at the end of the file, to make sure the last keyword can be read by the code.
