@@ -1,0 +1,72 @@
+OPTIM
+
+RESTART
+NO
+
+ENOPT
+MAX_ITER	50
+OBJ_FUNC_TOL	1E-5
+ALPHA	0.25
+ALPHA_ITER_MAX	5
+
+NE
+50
+
+STATE
+INJBHP
+
+PRIOR_INJBHP
+MEAN	init_injbhp.npz
+VAR	0.01
+LIMITS	1	300
+
+TEMPSAVE
+YES
+
+RESTARTSAVE
+YES
+
+ANALYSISDEBUG
+ALPHA
+STEP
+ALPHA_ITER
+OBJ_FUNC_VALUES
+STATE
+
+NPV_CONST
+WOP	300.0
+WGP	0.1
+WWP	40.0
+WWI	40.0	
+DISC	0.1
+OBJ_SCALING	1E8
+
+FWDSIM
+
+SIMULATOR
+SUBSURF_FLOW	OPM_FLOW
+# SUBSURF_FLOW	ECL_100
+
+PARALLEL
+8
+
+SIMOPTIONS
+#SIMPATH	/ecl/macros/
+SIM_FLAG	--enable-well-operability-check=false --enable-tuning=true --solver-max-time-step-in-days=1 --threads-per-process=2
+
+RUNFILE
+OPTIM_BHP
+
+REPORTPOINT
+report_dates.csv
+
+REPORTTYPE
+DATES
+
+DATATYPE
+FOPT
+FGPT
+FWPT
+FWIT
+
+#NOTE: It is important to have one empty line at the end of the file, to make sure the last keyword can be read by the code.
