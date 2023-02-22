@@ -7,4 +7,4 @@ The case consists of four fidelity levels you can run.
 - small: 40x20x5 grid cells
 - tiny: 10x10x2 grid cells
 
-All examples have the same well pattern and the same boundary/initial conditions.
+All examples have the same well pattern and the same boundary/initial conditions. Run the setup.py file in the data folder to generate data from the relevant case.
