@@ -97,7 +97,7 @@ DATATYPE
 ../data/datatyp.csv
 
 PARALLEL
-10
+8
 
 STARTDATE
 1/1/2022

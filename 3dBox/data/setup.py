@@ -3,7 +3,7 @@ import datetime as dt
 import pickle
 
 from misc import ecl,grdecl
-import csv, os
+import csv, os, shutil
 import numpy as np
 from mako.lookup import TemplateLookup
 from mako.runtime import Context
@@ -15,7 +15,7 @@ import mat73,shutil,glob
 
 
 # define the test case
-model = 'medium'
+model = 'medium'  # 'tiny', 'small', 'medium', 'large', or 'flowrock'
 case_name = 'RUNFILE'
 start = dt.datetime(2022, 1, 1)
 
@@ -24,7 +24,7 @@ prod_wells = ['PRO1', 'PRO2', 'PRO3']
 inj_wells = ['INJ1', 'INJ2', 'INJ3']
 prod_data = ['WOPR', 'WWPR']
 inj_data = ['WWIR']
-seis_data = ['bulkimp']
+seis_data = []  # 'sim2seis' or 'bulkimp'
 
 def main():
     # get information about the grid
@@ -37,6 +37,8 @@ def main():
     lkup = TemplateLookup(directories=os.getcwd(),
                           input_encoding='utf-8')
     tmpl = lkup.get_template(f'{case_name}.mako')
+    if os.path.exists('TRUE_RUN'):
+        shutil.rmtree('TRUE_RUN')
     os.mkdir('TRUE_RUN') # folder for run
     # use a context and render onto a file
     with open(f'TRUE_RUN/{case_name}.DATA','w') as f:
@@ -137,7 +139,7 @@ def main():
 
     if len(seis_data) > 0:
         # generate seismic data and noise
-        np.savez('overburden.npz', **{'obvalues': 310. * np.ones(np.product(grid['DIMENS']))})  # (10**(4)*9.81*depth)/(10**(5))})
+        np.savez('overburden.npz', **{'obvalues': 320. * np.ones(np.product(grid['DIMENS']))})  # (10**(4)*9.81*depth)/(10**(5))})
 
         elprop_input = {'overburden': 'overburden.npz',
                         'baseline': 0}
