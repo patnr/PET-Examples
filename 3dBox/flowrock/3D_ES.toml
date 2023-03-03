@@ -10,6 +10,8 @@ restartsave = "no"
 analysisdebug = [
     "pred_data",
     "state",
+    "data_misfit",
+    "prev_data_misfit",
 ]
 restart = "no"
 obsname = "days"
@@ -112,9 +114,9 @@ compress = [
     [
         "field",
         [
+            60.0,
+            60.0,
             5.0,
-            60.0,
-            60.0,
         ],
     ],
     [

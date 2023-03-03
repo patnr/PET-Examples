@@ -19,7 +19,7 @@ RESTARTSAVE
 NO
 
 ANALYSISDEBUG
-pred_data	state
+pred_data	state	data_misfit	prev_data_misfit
 
 RESTART
 #YES
