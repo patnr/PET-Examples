@@ -68,6 +68,3 @@ def plot_bhp():
     f.savefig(str(path_to_figures) + '/bhp')
     f.show()
 
-
-if __name__ == "__main__":
-    plot_ref()
