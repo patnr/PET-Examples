@@ -15,7 +15,7 @@ import mat73,shutil,glob
 
 
 # define the test case
-model = 'large'  # 'tiny', 'small', 'medium', 'large', or 'flowrock'
+model = 'tiny'  # 'tiny', 'small', 'medium', 'large', or 'flowrock'
 case_name = 'RUNFILE'
 start = dt.datetime(2022, 1, 1)
 

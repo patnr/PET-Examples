@@ -89,7 +89,7 @@ def plot_prod():
                 n_d2 = np.append(n_d2, data2[ind].transpose(), axis=1)
                 x_d2 = np.append(x_d2, x_days[ind])
 
-        f = plt.figure()
+        f = plt.figure(figsize=(10, 10))
         ax1 = plt.subplot(2, 1, 1)
         plt.plot(x_d1, np.percentile(n_d1, 90, axis=0), 'k')
         plt.plot(x_d1, np.percentile(n_d1, 100, axis=0), ':k')
@@ -107,19 +107,21 @@ def plot_prod():
         if p2:
             ax1.legend([(p1[0],), (p2[0],), (p5[0],), (p3[0],), (p4[0],)],
                        ['obs', 'ref', 'mean', '0-100 pctl', '10-90 pctl'],
-                       loc=4, prop={"size": 8}, bbox_to_anchor=(1, -0.5), ncol=2)
+                       loc=4, prop={"size": 14}, bbox_to_anchor=(1, -0.5), ncol=2)
         else:
             ax1.legend([(p1[0],), (p5[0],), (p3[0],), (p4[0],)],
                        ['obs', 'mean', '0-100 pctl', '10-90 pctl'],
-                       loc=4, prop={"size": 8}, bbox_to_anchor=(1, -0.5), ncol=2)
-        plt.title(str(t1) + ' initial forcast, at Well: ' + str(t2))
+                       loc=4, prop={"size": 14}, bbox_to_anchor=(1, -0.5), ncol=2)
+        plt.title(str(t1) + ' initial forcast, at Well: ' + str(t2), size=20)
         ylim = plt.gca().get_ylim()
         ax1.set_ylim(ylim)
-        plt.xlabel('Days')
+        plt.xticks(fontsize=16)
+        plt.yticks(fontsize=16)
+        plt.xlabel('Days', size=20)
         if "WBHP" in my_data:
-            plt.ylabel('Bar')
+            plt.ylabel('Bar', size=20)
         else:
-            plt.ylabel('Sm3/Day')
+            plt.ylabel('Sm3/Day', size=20)
 
         ax2 = plt.subplot(2, 1, 2)
         plt.plot(x_d2, np.percentile(n_d2, 90, axis=0), 'k')
@@ -132,19 +134,21 @@ def plot_prod():
         ax2.fill_between(x_d2, np.percentile(n_d2, 100, axis=0), np.percentile(n_d2, 0, axis=0), facecolor='lightgrey')
         ax2.fill_between(x_d2, np.percentile(n_d2, 90, axis=0), np.percentile(n_d2, 10, axis=0), facecolor='grey')
         plt.plot(x_d2, np.mean(n_d2, axis=0), 'orange')
-        plt.title(str(t1) + ' final forcast, at Well: ' + str(t2))
-        f.tight_layout(pad=0.5)
-        plt.xlabel('Days')
+        plt.title(str(t1) + ' final forcast, at Well: ' + str(t2), size=20)
+        f.tight_layout(pad=1.0)
+        plt.xlabel('Days', size=20)
+        plt.xticks(fontsize=16)
+        plt.yticks(fontsize=16)
         if "WBHP" in my_data:
-            plt.ylabel('Bar')
+            plt.ylabel('Bar', size=20)
         else:
-            plt.ylabel('Sm3/Day')
+            plt.ylabel('Sm3/Day', size=20)
         if save_figure is True:
             plt.savefig(str(path_to_figures) + '/' + str(t2) + '_' + str(t1) + '.png', format='png')
 
-        ############
-        plt.show()
-        plt.close('all')
+    ############
+    plt.show()
+    plt.close('all')
 
 
 plot_prod()

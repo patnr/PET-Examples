@@ -96,7 +96,9 @@ def plot_layer(field, f_dim, iter=1, layer_no=1):
     if f_dim[0] > 1:  # 3D
         title_str += ' at layer ' + str(layer_no)
         filename += '_layer' + str(layer_no)
-    plt.title(title_str)
+    plt.title(title_str, size=20)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
     if save_figure is True:
         plt.savefig(filename)
         os.system('convert ' + filename + '.png' + ' -trim ' + filename + '.png')
@@ -111,7 +113,9 @@ def plot_layer(field, f_dim, iter=1, layer_no=1):
     if f_dim[0] > 1:  # 3D
         title_str += ' at layer ' + str(layer_no)
         filename += '_layer' + str(layer_no)
-    plt.title(title_str)
+    plt.title(title_str, size=20)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
     if save_figure is True:
         plt.savefig(filename)
         os.system('convert ' + filename + '.png' + ' -trim ' + filename + '.png')
@@ -126,7 +130,9 @@ def plot_layer(field, f_dim, iter=1, layer_no=1):
     if f_dim[0] > 1:  # 3D
         title_str += ' at layer ' + str(layer_no)
         filename += '_layer' + str(layer_no)
-    plt.title(title_str)
+    plt.title(title_str, size=20)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
     if save_figure is True:
         plt.savefig(filename)
         os.system('convert ' + filename + '.png' + ' -trim ' + filename + '.png')
@@ -142,7 +148,9 @@ def plot_layer(field, f_dim, iter=1, layer_no=1):
     if f_dim[0] > 1:  # 3D
         title_str += ' at layer ' + str(layer_no)
         filename += '_layer' + str(layer_no)
-    plt.title(title_str)
+    plt.title(title_str, size=20)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
     if save_figure is True:
         plt.savefig(filename)
         os.system('convert ' + filename + '.png' + ' -trim ' + filename + '.png')
@@ -159,7 +167,9 @@ def plot_layer(field, f_dim, iter=1, layer_no=1):
     if f_dim[0] > 1:  # 3D
         title_str += ' at layer ' + str(layer_no)
         filename += '_layer' + str(layer_no)
-    plt.title(title_str)
+    plt.title(title_str, size=20)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
     if save_figure is True:
         plt.savefig(filename)
         os.system('convert ' + filename + '.png' + ' -trim ' + filename + '.png')
@@ -174,7 +184,9 @@ def plot_layer(field, f_dim, iter=1, layer_no=1):
     if f_dim[0] > 1:  # 3D
         title_str += ' at layer ' + str(layer_no)
         filename += '_layer' + str(layer_no)
-    plt.title(title_str)
+    plt.title(title_str, size=20)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
     if save_figure is True:
         plt.savefig(filename)
         os.system('convert ' + filename + '.png' + ' -trim ' + filename + '.png')
@@ -229,5 +241,5 @@ def export_to_grid(propname):
         grdecl._write_kw(fileobj, 'posterior_'+propname, field_post, _lookup, dim)
 
 
-plot_layer('permx', [2, 10, 10])
 export_to_grid('permx')
+plot_layer('permx', [2, 10, 10])

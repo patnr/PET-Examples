@@ -36,5 +36,11 @@ def plot_obj_func():
     plt.show()
 
 
-if __name__ == "__main__":
-    plot_obj_func()
+state_initial = np.load('ini_state.npz', allow_pickle=True)
+state_final = np.load('opt_state.npz', allow_pickle=True)
+for f in state_initial.files:
+    print('Initial ' + f + ' ' + str(state_initial[f]))
+    print('Final ' + f + ' ' + str(state_final[f]))
+    print('---------------')
+plot_obj_func()
+
