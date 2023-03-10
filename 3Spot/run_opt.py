@@ -39,6 +39,14 @@ def main():
     # Post-processing: enopt_plot
     plot_obj_func()
 
+    # Display results
+    state_initial = np.load('ini_state.npz', allow_pickle=True)
+    state_final = np.load('opt_state.npz', allow_pickle=True)
+    for f in state_initial.files:
+        print('Initial ' + f + ' ' + str(state_initial[f]))
+        print('Final ' + f + ' ' + str(state_final[f]))
+        print('---------------')
+
 
 if __name__ == '__main__':
     main()
