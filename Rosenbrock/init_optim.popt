@@ -1,0 +1,50 @@
+OPTIM
+
+RESTART
+NO
+
+ENOPT
+MAX_ITER	500
+OBJ_FUNC_TOL	1E-8
+STEP_TOL	1E-9
+ALPHA	0.25
+ALPHA_COV	0.0000001
+ALPHA_ITER_MAX	8
+
+NE
+10
+
+STATE
+VECTOR
+
+PRIOR_VECTOR
+MEAN	init_mean.npz
+VAR	0.00001
+LIMITS	-2	2
+
+TEMPSAVE
+YES
+
+RESTARTSAVE
+NO
+
+ANALYSISDEBUG
+ALPHA
+STEP
+ALPHA_ITER
+OBJ_FUNC_VALUES
+
+FWDSIM
+
+# SIMULATOR
+# SIMPLE_MODELS	ROSEN
+
+
+PARALLEL
+2
+
+DATATYPE
+VALUE
+
+
+#NOTE: It is important to have one empty line at the end of the file, to make sure the last keyword can be read by the code.
