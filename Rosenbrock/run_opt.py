@@ -2,54 +2,35 @@ import glob
 import shutil
 from glob import glob
 import numpy as np
+import os
 
 from popt.loop.optimize import Optimize
-from simulator.simple_models import rosen, noSimulation
+from simulator.simple_models import noSimulation
 from input_output import read_config
 from popt.update_schemes.enopt import EnOpt
 from Plotting.plot_optim import plot_obj_func
+from popt.cost_functions.rosenbrock import rosenbrock
 
 np.random.seed(101122)
 
 
 def main():
-    # Check if folder contains any En_ files, and remove them!
-    for folder in glob('En_*'):
-        try:
-            if len(folder.split('_')) == 2:
-                int(folder.split('_')[1])
-                shutil.rmtree(folder)
-        finally:
-            pass
+    # remove old results
+    for f in glob("debug_analysis_step_*.npz"):
+        os.remove(f)
 
+    dimension = 100  # dimension of Rosenbrock function
+
+    # select starting point
+    startmean = np.array([-2]*dimension)
+    np.savez('init_mean.npz', startmean)
+
+    # read init file
     ko, kf = read_config.read_txt('init_optim.popt')
+
     ke = ko
-
-    if 0:  # use rosen class
-        sim = rosen(kf)
-
-        def sign_swap(pred_data, *args):
-            values = []
-            for v in pred_data[0]['value'][0]:
-                values.append(-v)
-            return values
-
-        method = EnOpt(ko, ke, sim, sign_swap)
-    else:  # use noSimulation class
-        sim = noSimulation(kf)
-
-        def rosenbr(state, *args):
-            """
-            Rosenbrock with negative sign (since we want to find the minimum)
-            http://en.wikipedia.org/wiki/Rosenbrock_function
-            """
-            x = state[0]['vector']
-            x0 = x[:-1]
-            x1 = x[1:]
-            ans = sum((1 - x0) ** 2) + 100 * sum((x1 - x0 ** 2) ** 2)
-            return [-i for i in ans]
-
-        method = EnOpt(ko, ke, sim, rosenbr)
+    sim = noSimulation(kf)
+    method = EnOpt(ko, ke, sim, rosenbrock)
 
     optimization = Optimize(method)
     optimization.run_loop()
