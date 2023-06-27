@@ -1,0 +1,73 @@
+OPTIM
+
+RESTART
+NO
+
+ENOPT
+MAX_ITER	5
+OBJ_FUNC_TOL	1E-8
+STEP_TOL	1E-9
+ALPHA	0.1
+ALPHA_ITER_MAX	2
+NUM_MODELS	5
+HESSIAN
+
+NE
+10
+
+STATE
+INJBHP
+
+PRIOR_INJBHP
+MEAN	init_injbhp.npz
+VAR	0.001
+LIMITS	200	400
+
+TEMPSAVE
+YES
+
+RESTARTSAVE
+YES
+
+ANALYSISDEBUG
+ALPHA
+STEP
+ALPHA_ITER
+OBJ_FUNC_VALUES
+
+NPV_CONST
+WOP	283.05
+WGP	0
+WWP	37.74
+WWI	12.58
+DISC	0.08
+OBJ_SCALING	1E8
+
+FWDSIM
+
+SIMULATOR
+SUBSURF_FLOW	OPM_FLOW
+# SUBSURF_FLOW	ECL_100
+
+PARALLEL
+6
+
+SIMOPTIONS
+SIM_FLAG	--enable-tuning=true --threads-per-process=2 --tolerance-mb=1e-5 --linear-solver-ignore-convergence-failure=true --tolerance-cnv-relaxed=100 --tolerance-cnv=0.1 --min-strict-cnv-iter=2 --ds-max=0.1 --min-time-step-before-shutting-problematic-wells-in-days=10 --time-step-after-event-in-days=10 --strict-outer-iter-wells=4
+
+RUNFILE
+3WELL_INJ
+
+REPORTPOINT
+report_dates.csv
+
+REPORTTYPE
+DATES
+
+DATATYPE
+FOPT
+FGPT
+FWPT
+FWIT
+
+#NOTE: It is important to have one empty line at the end of the file, to make sure the last keyword can be read by the code.
