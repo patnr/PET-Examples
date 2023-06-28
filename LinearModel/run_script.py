@@ -58,6 +58,7 @@ x_post = assimilation.ensemble.prior_info[param]['mean'] + np.dot(K, dobs)
 Cx_post = Cm - np.dot(K, CxGT.T)
 Sx_post = np.sqrt(np.diag(Cx_post))
 
-plt.figure();plt.plot(assimilation.ensemble.state[param].mean(axis=1));plt.plot(x_post,'r');
-plt.figure();plt.plot(assimilation.ensemble.state[param].std(ddof=1,axis=1));plt.plot(Sx_post,'r');
-plt.show()
+if __name__ == "__main__":
+    plt.figure();plt.plot(assimilation.ensemble.state[param].mean(axis=1));plt.plot(x_post,'r');
+    plt.figure();plt.plot(assimilation.ensemble.state[param].std(ddof=1,axis=1));plt.plot(Sx_post,'r');
+    plt.show()
